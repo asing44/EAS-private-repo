@@ -4,6 +4,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    text-wrap: pretty;
 }
 
 /* Focus state style for keyboard navigation for the focusable elements */
@@ -200,15 +201,50 @@ a,
 
 /* ----------------------------- Global defaults ---------------------------- */
 
-/* Apply to all classes */
-* {
-    transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+/* Fluid font size */
+html {
+    font-size: 1rem;
+}
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: calc(0.8125rem + 0.2vw);
+    }
+}
+@media screen and (max-width: 1440px) {
+    html {
+        font-size: calc(0.8126951092611863rem + 0.20811654526534862vw);
+    }
+}
+@media screen and (max-width: 479px) {
+    html {
+        font-size: calc(0.7494769874476988rem + 0.8368200836820083vw);
+    }
+}
+
+.e_dd-open:has(.e_dd-open_parent.w--open) .e_dd-open {
+    filter: grayscale(80%) blur(5px) !important;
+}
+
+/* Prevent image selection color when making selections. */
+img::selection {
+    background: transparent;
+}
+
+/* Restore default link styling */
+a {
+    text-decoration: underline;;
+    transition: all 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+a:hover {
+    opacity: 80%;
 }
 
 /* ---------------------------------- Text ---------------------------------- */
 
 /* Text Truncate */
-.u_truncate, .u-truncate {
+.u_truncate,
+.u-truncate {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
@@ -216,11 +252,110 @@ a,
 }
 
 /* -------------------------------------------------------------------------- */
+/*                                   Effects                                  */
+/* -------------------------------------------------------------------------- */
+
+.mask-to-bottom {
+    mask-image: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+    );
+}
+
+.mask-to-top {
+    mask-image: linear-gradient(
+        0deg,
+        rgba(255, 255, 255, 0) 100%,
+        rgba(255, 255, 255, 1) 0%
+    );
+}
+
+/* -------------------------------------------------------------------------- */
 /*                               Utility classes                              */
 /* -------------------------------------------------------------------------- */
 
+.custom_code {
+    display: none;
+}
+
+/* Removes default link styling */
+a.u_unset {
+    color: inherit;
+    text-decoration: unset;
+}
+
 /* -------------------------------- Animation ------------------------------- */
 
-.a_c-ease {
-    transition: all 400ms;
+/* Animation to fade other elements in a grid when one grid item is hovered. Must have classes
+applied to work! */
+.a_fade-others-parent:has(.a_fade-others:hover) .a_fade-others:not(:hover) {
+    filter: brightness(50%);
+    transition: filter 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
+    cursor: pointer;
 }
+
+/* Provides a standard easing for all properties */
+.a_global-ease {
+    transition: all 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Hover animation to change opacity to 70% */
+.a_hover-70 {
+    transition: opacity 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.a_hover-70:hover {
+    opacity: 75%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Buttons                                  */
+/* -------------------------------------------------------------------------- */
+
+/* .btn {
+    position: relative;
+    padding: 1rem 1.5rem;
+    margin: unset;
+    outline: unset;
+    border: unset;
+    border-radius: 0px;
+    color: white;
+    background-color: unset;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+.btn:hover {
+    background-color: none;
+    outline: 1px solid black;
+    outline-offset: 4px;
+}
+
+.btn::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    left: 0%;
+    background-color: black;
+    transition: all 250ms ease-in-out;
+}
+
+.btn:hover::after {
+    height: 80%;
+    width: 90%;
+    top: 10%;
+    left: 5%;
+}
+
+.btn-text {
+    position: relative;
+    font-size: 1rem;
+    z-index: 1;
+} */
+
+/* -------------------------------------------------------------------------- */
+/*                                Site Specific                               */
+/* -------------------------------------------------------------------------- */

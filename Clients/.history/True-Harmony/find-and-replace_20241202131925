@@ -1,0 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+    let heroSection = document.getElementsByClassName("new-hero")[0];
+    console.log(heroSection.childNodes)
+    // let matchedItems = document.getElementsByTagName("span");
+});

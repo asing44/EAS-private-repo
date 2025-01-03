@@ -1,0 +1,7 @@
+document.addEventListener("DOMContentLoaded", () => {
+document.body.innerHTML = document.body.innerHTML.replace(
+    /Colorado Integrative Health/g,
+    "Colorado Integrative Healthcare"
+);
+});
+

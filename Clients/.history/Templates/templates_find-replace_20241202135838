@@ -1,0 +1,28 @@
+function toTitleCase(str) {
+    return str
+        .toLowerCase() // Convert the entire string to lowercase
+        .split(" ") // Split the string into an array of words
+        .map((word) => {
+            // Capitalize the first letter and concatenate with the rest of the word
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        })
+        .join(" "); // Join the array of words back into a single string
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    let heroSection = document.getElementsByClassName("new-hero")[0];
+    if (!heroSection) {
+        console.error("Hero section not found");
+        return;
+    }
+    // Use `children` to get only element nodes
+    let heroEl = Array.from(heroSection.children[0].childNodes);
+    let title = heroEl.filter((item) => {
+        return item.className && item.className.includes("xxl-heading");
+    })[0].textContent;
+    // Filter elements with class "body-display"
+    let toReplace = heroEl.filter((item) => {
+        return item.className && item.className.includes("body-display");
+    })[0];
+    toReplace.textContent = `${toTitleCase(title)} in Mesa, AZ and Chandler, AZ`;
+});

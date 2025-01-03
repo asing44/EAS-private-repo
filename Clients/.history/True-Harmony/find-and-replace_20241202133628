@@ -1,0 +1,10 @@
+document.addEventListener("DOMContentLoaded", () => {
+    let heroSection = document.getElementsByClassName("new-hero")[0];
+    let heroEl = heroSection.childNodes[0].childNodes;
+    console.log(heroEl)
+    let matches = heroEl.filter(item => {
+        item.className.toString().includes("body-display")
+    })
+    console.log(matches)
+    // let matchedItems = document.getElementsByTagName("span");
+});

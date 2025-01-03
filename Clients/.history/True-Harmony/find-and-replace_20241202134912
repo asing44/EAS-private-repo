@@ -1,0 +1,20 @@
+document.addEventListener("DOMContentLoaded", () => {
+    let heroSection = document.getElementsByClassName("new-hero")[0];
+    if (!heroSection) {
+        console.error("Hero section not found");
+        return;
+    }
+    // Use `children` to get only element nodes
+    let heroEl = Array.from(heroSection.children[0].childNodes);
+    let title = ""
+    heroEl.forEach((el) => {
+        function find() {
+            title = el.className.includes("xxl-heading") ? el.textContent : "";
+        };
+    });
+    // Filter elements with class "body-display"
+    let toReplace = heroEl.filter((item) => {
+        return item.className && item.className.includes("body-display");
+    });
+    console.log(toReplace, title);
+});

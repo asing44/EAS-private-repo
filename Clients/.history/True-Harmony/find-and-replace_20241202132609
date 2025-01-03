@@ -1,0 +1,11 @@
+document.addEventListener("DOMContentLoaded", () => {
+    let heroSection = document.getElementsByClassName("new-hero")[0];
+    let heroEl =
+        heroSection.childNodes[0].childNodes.getElementsByClassName(
+            "body-display"
+        )[0];
+    heroEl.forEach(element => {
+        console.log(element.id)
+    });
+    // let matchedItems = document.getElementsByTagName("span");
+});
