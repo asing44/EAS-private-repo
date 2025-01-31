@@ -1,0 +1,22 @@
+// Replace phrases on the website
+function replacePhrases(replacementText) {
+    // Define a regular expression to match the phrases
+    const regex = /\bgender[-\s]?affirming\b/gi;
+
+    // Recursive function to replace text in a node and its children
+    function traverseAndReplace(node) {
+        if (node.nodeType === Node.TEXT_NODE) {
+            // Replace text content if it's a text node
+            node.textContent = node.textContent.replace(regex, replacementText);
+        } else if (node.nodeType === Node.ELEMENT_NODE && node.childNodes) {
+            // Traverse child nodes if it's an element node
+            node.childNodes.forEach(traverseAndReplace);
+        }
+    }
+
+    // Start traversal from the body of the document
+    traverseAndReplace(document.body);
+}
+
+// Usage: Call the function with the replacement text
+replacePhrases("");

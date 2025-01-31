@@ -1,0 +1,7 @@
+// Script to find and replace text content automatically
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.innerHTML = document.body.innerHTML.replace(
+        /Colorado Integrative Health/gmi,
+        "Colorado Integrative Healthcare"
+    );
+});

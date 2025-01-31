@@ -1,3 +1,7 @@
+/* -------------------------------------------------------------------------- */
+/*                              Previous defaults                             */
+/* -------------------------------------------------------------------------- */
+
 /* Make text look crisper and more legible in all browsers */
 body {
     -webkit-font-smoothing: antialiased;
@@ -58,7 +62,7 @@ Important: You will not be able to style for example "All Links" in Designer wit
 Uncomment this CSS to use it in the project. Leave this message for future hand-off.
 */
 
-a,
+/* a,
 .w-input,
 .w-select,
 .w-tab-link,
@@ -69,7 +73,7 @@ a,
     color: inherit;
     text-decoration: inherit;
     font-size: inherit;
-}
+} */
 
 /* Apply "..." after 3 lines of text */
 .text-style-3lines {
@@ -203,11 +207,11 @@ a,
 
 /* Fluid font size */
 html {
-    font-size: 1.0625rem;
+    font-size: 1rem;
 }
 @media screen and (max-width: 1920px) {
     html {
-        font-size: calc(0.8125rem + 0.20833333333333337vw);
+        font-size: calc(0.8125rem + 0.2vw);
     }
 }
 @media screen and (max-width: 1440px) {
@@ -228,6 +232,16 @@ html {
 /* Prevent image selection color when making selections. */
 img::selection {
     background: transparent;
+}
+
+/* Restore default link styling */
+a {
+    text-decoration: underline;
+    transition: all 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+a:hover {
+    opacity: 80%;
 }
 
 /* ---------------------------------- Text ---------------------------------- */
@@ -269,28 +283,134 @@ img::selection {
     display: none;
 }
 
+/* Removes default link styling */
+a.u_unset {
+    color: inherit;
+    text-decoration: unset;
+}
+
+/* Hides element in design mode but shows on published site */
+.wf-design-mode .example_wf-design-mode {
+    display: none;
+}
+
 /* -------------------------------- Animation ------------------------------- */
 
 /* Animation to fade other elements in a grid when one grid item is hovered. Must have classes
 applied to work! */
-.a_fade-others-parent:has(.a_fade-others:hover) .a_fade-others:not(:hover) {
+.a-fade-others-parent:has(.a-fade-others:hover) .a-fade-others:not(:hover) {
     filter: brightness(50%);
-    transition: filter 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: filter 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
     cursor: pointer;
 }
 
 /* Provides a standard easing for all properties */
-.a_global-ease {
-    transition: all 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+.a-global-ease {
+    transition: all 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 /* Hover animation to change opacity to 70% */
-.a_hover-70 {
-    transition: opacity 500ms cubic-bezier(0.645, 0.045, 0.355, 1);
+.a-hover-70 {
+    transition: opacity 250ms cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.a_hover-70:hover {
+.a-hover-70:hover {
     opacity: 75%;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Buttons                                  */
+/* -------------------------------------------------------------------------- */
+
+/* ---------------------------------- Shift --------------------------------- */
+
+.bs-shift {
+    position: relative;
+    z-index: 1;
+}
+.bs-shift ul li a:hover {
+    color: #91640f;
+}
+nav.shift ul li a:after {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: 1px;
+    content: ".";
+    color: transparent;
+    background: #f1c40f;
+    visibility: none;
+    opacity: 0;
+    z-index: -1;
+}
+nav.shift ul li a:hover:after {
+    opacity: 1;
+    visibility: visible;
+    height: 100%;
+}
+
+/* Keyframes */
+@-webkit-keyframes fill {
+    0% {
+        width: 0%;
+        height: 1px;
+    }
+    50% {
+        width: 100%;
+        height: 1px;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+        background: #333;
+    }
+}
+
+/* Keyframes */
+@-webkit-keyframes circle {
+    0% {
+        width: 1px;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto;
+        height: 1px;
+        z-index: -1;
+        background: #eee;
+        border-radius: 100%;
+    }
+    100% {
+        background: #aaa;
+        height: 5000%;
+        width: 5000%;
+        z-index: -1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-radius: 0;
+    }
+}
+/* -------------------------------------------------------------------------- */
+/*                                 Backgrounds                                */
+/* -------------------------------------------------------------------------- */
+
+/* Blend an image top to bottom */
+.image-mask {
+    mask-image: linear-gradient(
+        to top,
+        transparent 0%,
+        white 10%,
+        white 90%,
+        transparent 100%
+    );
 }
 
 /* -------------------------------------------------------------------------- */
